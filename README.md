@@ -2,7 +2,11 @@
 
 aka: Google Takeout Location History GeoJSON to GPX converter
 
-This is a script that is part of my photo geotagging workflow (which you can read about here) but it can be used to convert the Google Takeout format into a gpx format for use anywhere else. This conversion is lossy and you will only get the location, timestamp, accuracy and speed data for each point. All other Metadata will be lost.
+This is a script that is part of my photo geotagging workflow but it can be used to convert the Google Takeout format into a gpx format for use anywhere else. This conversion is lossy and you will only get the location, timestamp, accuracy and speed data for each point. All other Metadata will be lost.
+
+I had to write this because after a lot of searching, other similar scripts were already out of date or were running in python2, which is no longer preinstalled on my mac.
+
+> The file format is correct as of 2023-02-01. If it no longer works in the future, feel free to open an issue or create a PR to update the script.
 
 ## Requirements
 - Python > 3.7
@@ -38,17 +42,17 @@ You can also run this once for each year and export the different tracks to diff
 This is the bash code I came up with for getting it to split the files into different years.
 
 ```
-python3 self.py Records-002.json output-2013.gpx -s 2013-01-01 -e 2013-12-31 && \
-python3 self.py Records-002.json output-2014.gpx -s 2014-01-01 -e 2014-12-31 && \
-python3 self.py Records-002.json output-2015.gpx -s 2015-01-01 -e 2015-12-31 && \
-python3 self.py Records-002.json output-2016.gpx -s 2016-01-01 -e 2016-12-31 && \
-python3 self.py Records-002.json output-2017.gpx -s 2017-01-01 -e 2017-12-31 && \
-python3 self.py Records-002.json output-2018.gpx -s 2018-01-01 -e 2018-12-31 && \
-python3 self.py Records-002.json output-2019.gpx -s 2019-01-01 -e 2019-12-31 && \
-python3 self.py Records-002.json output-2020.gpx -s 2020-01-01 -e 2020-12-31 && \
-python3 self.py Records-002.json output-2021.gpx -s 2021-01-01 -e 2021-12-31 && \
-python3 self.py Records-002.json output-2021.gpx -s 2021-01-01 -e 2021-12-31 && \
-python3 self.py Records-002.json output-2023.gpx -s 2023-01-01 -e 2023-12-31
+python3 geojson2gpx.py Records-002.json output-2013.gpx -s 2013-01-01 -e 2013-12-31 && \
+python3 geojson2gpx.py Records-002.json output-2014.gpx -s 2014-01-01 -e 2014-12-31 && \
+python3 geojson2gpx.py Records-002.json output-2015.gpx -s 2015-01-01 -e 2015-12-31 && \
+python3 geojson2gpx.py Records-002.json output-2016.gpx -s 2016-01-01 -e 2016-12-31 && \
+python3 geojson2gpx.py Records-002.json output-2017.gpx -s 2017-01-01 -e 2017-12-31 && \
+python3 geojson2gpx.py Records-002.json output-2018.gpx -s 2018-01-01 -e 2018-12-31 && \
+python3 geojson2gpx.py Records-002.json output-2019.gpx -s 2019-01-01 -e 2019-12-31 && \
+python3 geojson2gpx.py Records-002.json output-2020.gpx -s 2020-01-01 -e 2020-12-31 && \
+python3 geojson2gpx.py Records-002.json output-2021.gpx -s 2021-01-01 -e 2021-12-31 && \
+python3 geojson2gpx.py Records-002.json output-2021.gpx -s 2021-01-01 -e 2021-12-31 && \
+python3 geojson2gpx.py Records-002.json output-2023.gpx -s 2023-01-01 -e 2023-12-31
 ```
 
 As you can see, this is some extremely advanced stuff, so proceed with caution.
